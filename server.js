@@ -27,3 +27,31 @@ function listening() {
     console.log("server is running");
     console.log(`running on localhost: ${port}`);
 }
+
+// get function
+
+app.get('/allData', sendData);
+
+function sendData(request, response) {
+    response.send(projectData);
+}
+
+// post function
+
+app.post('/addData', addData);
+
+function addData(request, response) {
+
+    let data = request.body;
+    console.log('data from server side: ', data)
+
+    // date
+    projectData['date'] = data.date;
+    // temp
+    projectData['temp'] = data.temp;
+    // feelings    
+    projectData['feelings'] = data.feelings;
+
+    response.send(projectData);
+
+}

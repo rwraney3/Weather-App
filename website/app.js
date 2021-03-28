@@ -8,13 +8,14 @@ document.getElementById('generate').addEventListener('click', performAction);
 
 function performAction(){
     const newZip =  document.getElementById('zip').value;
-    getZip(baseURL, newZip, country, apiKey)
+    getWeather(baseURL, newZip, country, apiKey)
 }
-const getZip = async (baseURL, zip, country, key)=> {
+const getWeather = async (baseURL, zip, country, key)=> {
     const res = await fetch(baseURL+zip+country+key)
     try {
         const data = await res.json();
         console.log(data);
+        postData('/server', )
         return data;
   } catch(error) {
       console.log("error", error);
