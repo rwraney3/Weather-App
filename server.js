@@ -32,13 +32,13 @@ function listening() {
 
 app.get('/allData', sendData);
 
-function sendData(request, response) {
-    response.send(projectData);
+function sendData(req, res) {
+    res.send(projectData);
 }
 
 // post function
 
-app.post('/addData', addData);
+app.post('/add', addData);
 
 function addData(request, response) {
 
@@ -46,12 +46,12 @@ function addData(request, response) {
     console.log('data from server side: ', data)
 
     // date
-    projectData['date'] = data.date;
+    projectData.date = req.body.date;
     // temp
-    projectData['temp'] = data.temp;
-    // feelings    
-    projectData['feelings'] = data.feelings;
+    projectData.date = req.body.temp;
+    // content    
+    projectData.content = req.body.content;
 
-    response.send(projectData);
-
+    res.send();
+    console.log(projectData)
 }
