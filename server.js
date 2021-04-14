@@ -19,14 +19,7 @@ app.use(cors());
 app.use(express.static('website'));
 
 
-// Setup Server
-const port = 8000;
-const server = app.listen(port, listening);
 
-function listening() {
-    console.log("server is running");
-    console.log(`running on localhost: ${port}`);
-}
 
 // get function
 
@@ -40,18 +33,22 @@ function sendData(req, res) {
 
 app.post('/add', addData);
 
-function addData(request, response) {
+function addData(req, res) {
 
-    let data = request.body;
-    console.log('data from server side: ', data)
-
-    // date
+    // date temp content
     projectData.date = req.body.date;
-    // temp
-    projectData.date = req.body.temp;
-    // content    
+    projectData.temp = req.body.temp;
     projectData.content = req.body.content;
 
     res.send();
     console.log(projectData)
+}
+
+// Setup Server
+const port = 8000;
+const server = app.listen(port, listening);
+
+function listening() {
+    console.log("server is running");
+    console.log(`running on localhost: ${port}`);
 }

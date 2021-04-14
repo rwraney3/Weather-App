@@ -2,11 +2,11 @@
 let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip='
 let apiKey = '&units=imperial&appid=0a1412ebc534bf33dafd0211321ab8cc'
 let country = ',us';
-
+let baseURLLocalAPI = 'http://localHost:8000';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.getMonth()+' - '+ d.getDate()+' - '+ d.getFullYear();
 
 // add event listener
 
@@ -55,12 +55,12 @@ const postData = async function(url = '', data = {}) {
 });
 
 try {
-        const newData = await response.json()
-        console.log('Data Received:', newData);
-        console.log(newData);
-        return newData;
+        const data = await response.json();
+        console.log('Data Received:', data);
+        console.log(data);
+        return data;
     } catch(error) {
-        console.log("error: ", error);
+        console.log('error:', error);
     }
 }
 
@@ -70,9 +70,9 @@ const updateUI = async function()  {
     const request = await fetch('/allData');
     try{
         const allData = await request.json();
-        document.getElementById('date').innerHTML = 'Date: ${allData.date}';
-        document.getElementById('temp').innerHTML = 'Temp: ${allData.temp}';
-        document.getElementById('content').innerHTML = 'I am feeling: ${allData.content}';
+        document.getElementById('date').innerHTML = `Date: ${allData.date}`;
+        document.getElementById('temp').innerHTML = `Temp: ${allData.temp} F`;
+        document.getElementById('content').innerHTML = `I am feeling: ${allData.content}`;
     } catch(error) {
         console.log('error: ', error);
     }
