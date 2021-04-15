@@ -49,21 +49,26 @@ function performAction(e) {
     let zip = document.getElementById('zip').value;
     let newContent = document.getElementById('feelings').value;
 
-    if (zip == "") {
-        alert("A 5-digit zip code is required");
-        return false;
-    }
-
-    getWeather(baseURL, zip, country, apiKey)
-        .then (function(data) {
-            console.log(data);
-                // add data to POST request
-                postData('/add', { date: newDate, temp: data.main.temp, name: data.name, content: newContent });
-            })
-        .then (() => {
-            updateUI();
-            
+if (zipValid(zip)) {
+        //  block of code to be executed if the condition is false
+            getWeather(baseURL, zip, country, apiKey)
+                .then (function(data) {
+                    console.log(data);
+                        // add data to POST request
+                        postData('/add', { date: newDate, temp: data.main.temp, name: data.name, content: newContent });
+                    })
+                .then (() => {
+                    updateUI();
 })
+}       else {
+            alert(`${zip} is not 5 digits - please enter a 5-digit zip code`);
+        }
+}
+// Check zip code for 5 digits
+
+const zipValid = function(zip) {
+    regEx = /^[0-9]{5}/;
+    return regEx.test(zip);
 }
 
 // write an async function that uses FETCH() to make a GET request to OpenWeatherMap API
