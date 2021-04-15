@@ -8,7 +8,7 @@ This project requires you to create an asynchronous web app that uses Web API an
 By entering a US 5-digit zip code in the zip code block the app will make a call to the API for the current temperature.  As an added, the town/city
 that is associated with the zip code will be displayed.  The users current local time is displayed as well.
 
-A test is preformed to check that a 5 digits were entered.
+A test is preformed to check that 5 digits were entered.
 
 The time portion was gathered from codepen and reference is given in the HTML.
 
