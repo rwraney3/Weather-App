@@ -1,7 +1,7 @@
 # Weather-Journal App Project
 
 ## Overview
-This is project #3 in the <udacity>[http://udacity.com] Front-End Web Developer nanodegree.
+This is project 3 in [Udacity Front End Web Developer](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011) nanodegree.
 This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
 
 ## Instructions
