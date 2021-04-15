@@ -5,8 +5,41 @@ let country = ',us';
 let baseURLLocalAPI = 'http://localHost:8000';
 
 // Create a new date instance dynamically with JS
+
+
 let d = new Date();
-let newDate = d.getMonth()+' - '+ d.getDate()+' - '+ d.getFullYear();
+let month = d.getMonth() +1;
+let newDate =  month +'-'+ d.getDate()+'-'+ d.getFullYear();
+
+// Time
+
+function showTime(){
+    var date = new Date();
+    var h = date.getHours(); // 0 - 23
+    var m = date.getMinutes(); // 0 - 59
+    var s = date.getSeconds(); // 0 - 59
+    var session = "AM";
+    
+    if(h == 0){
+        h = 12;
+    }
+    
+    if(h > 12){
+        h = h - 12;
+        session = "PM";
+    }
+    
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+    
+    var time = (parseInt(h, 10)) + ":" + m + ":" +s + " " + session;
+    document.getElementById("MyClockDisplay").textContent = `Current time: ${time}`;
+    
+    setTimeout(showTime, 1000);
+    
+}
+showTime();
 
 // add event listener
 
@@ -25,7 +58,7 @@ function performAction(e) {
         .then (function(data) {
             console.log(data);
                 // add data to POST request
-                postData('/add', { date: newDate, temp: data.main.temp, content: newContent });
+                postData('/add', { date: newDate, temp: data.main.temp, name: data.name, content: newContent });
             })
         .then (() => {
             updateUI();
@@ -71,7 +104,8 @@ const updateUI = async function()  {
     try{
         const allData = await request.json();
         document.getElementById('date').innerHTML = `Date: ${allData.date}`;
-        document.getElementById('temp').innerHTML = `Temp: ${allData.temp} F`;
+        document.getElementById('location').innerHTML = `Currently in ${allData.name}`;
+        document.getElementById('temp').innerHTML = `Temp: ${allData.temp}° F`;
         document.getElementById('content').innerHTML = `I am feeling: ${allData.content}`;
     } catch(error) {
         console.log('error: ', error);

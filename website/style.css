@@ -16,6 +16,21 @@ body{
     font-family: 'Oswald', sans-serif;
 }
 
+body {
+    background: black;
+}
+
+.clock {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: white;
+    font-size: 15px;
+
+
+}
+
 .holder{
 
 
@@ -27,12 +42,15 @@ body{
 
 #entryHolder{
 
-
 }
 
 #date{
     color: white;
 
+}
+
+#location{
+    color: #f0d43a;
 }
 
 #temp{
@@ -41,6 +59,8 @@ body{
 
 #content{
     color: white;
+    height: 40px;
+    padding: -25px;
 }
 
 .headline {
@@ -67,7 +87,7 @@ input{
     border: none;
 }
 
-button{
+button {
     width: 400px;
     height: 100px;
     background: #3b4a6b;
@@ -76,6 +96,7 @@ button{
     font-family: 'Oswald', sans-serif;
     border: none;
     box-shadow: 2px 4px 5px #444;
+    cursor: pointer;
 }
 h1{
     font-size: 36px;
@@ -87,6 +108,7 @@ textarea{
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
 }
+
 /* Reset style for HTML element on active to have no border*/
 input:focus,
 select:focus,

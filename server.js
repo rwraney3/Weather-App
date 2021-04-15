@@ -37,6 +37,7 @@ function addData(req, res) {
 
     // date temp content
     projectData.date = req.body.date;
+    projectData.name = req.body.name;
     projectData.temp = req.body.temp;
     projectData.content = req.body.content;
 
